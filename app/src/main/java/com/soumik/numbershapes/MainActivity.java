@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void checkNumber(View view){
 
+        Number myNumber=new Number();
+        myNumber.number=16;
+        System.out.println(myNumber.isSquare());
 
     }
 
