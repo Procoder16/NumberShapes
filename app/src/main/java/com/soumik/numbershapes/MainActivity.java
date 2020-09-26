@@ -3,6 +3,8 @@ package com.soumik.numbershapes;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,10 +50,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void checkNumber(View view){
+        EditText newNumber=(EditText)findViewById(R.id.enteredNumber);
 
         Number myNumber=new Number();
-        myNumber.number=16;
-        System.out.println(myNumber.isSquare());
+        myNumber.number=Integer.parseInt(newNumber.getText().toString());
+
+        String message;
+        if(myNumber.isSquare() && myNumber.isTriangular()){
+            message=newNumber.getText().toString()+" is Triangular as well as a Square number.";
+        }
+        else if(myNumber.isTriangular()){
+            message=newNumber.getText().toString()+" is a Triangular Number";
+        }
+        else if(myNumber.isSquare()){
+            message=newNumber.getText().toString()+" is a Square Number";
+        }
+        else{
+            message=newNumber.getText().toString()+" is neither a Square nor a Triangular Number";
+        }
+
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
     }
 
